@@ -1,11 +1,13 @@
+import numpy as np 
 import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 import matplotlib.pyplot as plt
 
-#Author :Nguyễn Bá Huy-19146194
+#install thư viện
+#!pip install scikit-fuzzy
 
-#Hàm Liên Thuộc(membership function)
+#Hàm liên thuộc 
 def mf(x,function="gaussmf",a=None,b=None,c=None,range=None):
   assert function in ["gbellmf","gaussmf","trapmf","trimf"]
   if function == "gbellmf":
@@ -18,7 +20,7 @@ def mf(x,function="gaussmf",a=None,b=None,c=None,range=None):
     funct=fuzz.trapmf(x,range)#range=[30,30,50,60]
   return funct
 
-#Visualize plot function
+#**Visualize plot function**
 def plot_func(x,y,color='b',title="Tên biểu đồ",xlabel="tên trục x",ylabel="tên trục x",loc='upper center'):
   plt.figure()
   assert color in ['b','r','g','v']
@@ -30,7 +32,7 @@ def plot_func(x,y,color='b',title="Tên biểu đồ",xlabel="tên trục x",yla
     plt.plot(x,y,'g',linewidth=1.5,label=f'{y}')
   if color=='v':
     plt.plot(x,y,'v',linewidth=1.5,label=f'{y}')
-  plt.title(name)
+  plt.title(title)
   plt.xlabel(xlabel)
   plt.ylabel(ylabel)
   assert loc in ['upper center','upper left','upper right','lower left']
@@ -46,16 +48,6 @@ def plot_func(x,y,color='b',title="Tên biểu đồ",xlabel="tên trục x",yla
     plt.legend(loc,bbox_to_anchor=(1.5,2),ncol=1,shadow=True,fancybox=True)
     
 
-def input_signal(x,y,xlabel='food',ylabel='tips'):
-  input=ctrl.Antecedent(x,xlabel)
-  output=ctrl.Consequent(y,ylabel)
-  #Tạo hàm liên thuộc
-  if y is not None:
-    return input,output
-  else:
-    return input
-  
- '''Hàm dưới đây em đang tạo dở!! vẫn chưa xong '''
 def output_signal(output,funtion="trimf",contribute="less",range=None,a,b,c):
   assert function in ["trimf","trapmf","gaussmf","gbellmf"]
   if function=="trimf":#range=[30,30,50]
@@ -66,6 +58,4 @@ def output_signal(output,funtion="trimf",contribute="less",range=None,a,b,c):
     output[f"{contribute}"]=fuzz.gaussmf(output.universe,a,b)
   if function=="gbellmf":# range=fuzz.gbellmf(b1,10,20,30) 
     output[f"{contribute}"]=fuzz.gbellmf(output.universe,a,b,c)
-  return output[f"{contribute}"]  
-
-
+  return output[f"{contribute}"]
