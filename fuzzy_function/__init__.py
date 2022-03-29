@@ -1,0 +1,1 @@
+from fuzzy_function.fuzzy_funct import mf,plot_func,output_signal
