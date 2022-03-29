@@ -5,7 +5,7 @@ from __future__ import print_function
 
 import setuptools
 
-_VERSION = '0.3.2'
+_VERSION_ = '0.3.2'
 
 REQUIRED_PACKAGES = [
 ]
@@ -20,5 +20,5 @@ setuptools.setup(
     dependency_links=DEPENDENCY_LINKS,
     url='https://github.com/BaHuy15/Fuzzy-function',
     package_dir={},
-    packages=setuptools.find_packages(exclude=['tests']),
+    packages=setuptools.find_packages(exclude=['train']),
 )
