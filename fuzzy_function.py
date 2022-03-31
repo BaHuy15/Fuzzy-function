@@ -55,7 +55,7 @@ def input_signal(x,y,xlabel='food',ylabel='tips'):
   else:
     return input
   
- '''Hàm dưới đây em đang tạo dở!! vẫn chưa xong '''
+ 
 def output_signal(output,funtion="trimf",contribute="less",range=None,a,b,c):
   assert function in ["trimf","trapmf","gaussmf","gbellmf"]
   if function=="trimf":#range=[30,30,50]
